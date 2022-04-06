@@ -1,6 +1,6 @@
-from dataclass import dataclass
+from dataclasses import dataclass
 from typing import List
-from .types import Badge
+from ..types import Badge
 from .bot import Bot
 
 @dataclass(frozen=True)

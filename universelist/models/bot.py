@@ -1,6 +1,6 @@
-from dataclass import dataclass
+from dataclasses import dataclass
 from typing import List
-from .types import Category, Badge
+from ..types import Category, Badge
 from .user import User
 
 
