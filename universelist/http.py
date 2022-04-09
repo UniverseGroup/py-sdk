@@ -86,5 +86,5 @@ class Router:
             "GET", f"bots/{bot_id}/vote", params={"userid": user_id}
         )
 
-    async def post_bot_guild_count(self, id: int, count: int) -> dict:
+    async def post_bot_stat(self, id: int, count: int) -> dict:
         return await self.request("POST", f"bots/{id}/stat", data={"servers": count})
