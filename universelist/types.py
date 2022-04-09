@@ -4,4 +4,5 @@ Category = Literal["관리", "뮤직", "유틸리티", "게임", "전적", "검�
 
 Badge = Literal[
     "EarlyBot",
+    "EarlyTester",
 ]
