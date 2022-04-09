@@ -73,18 +73,18 @@ class Router:
         self,
     ) -> None:
         if self._session:
-            return await self.session.close()
+            await self.session.close()
 
-    async def get_bots(self, id: int):
+    async def get_bots(self, id: int) -> dict:
         return await self.request("GET", f"bots/{id}")
 
-    async def get_users(self, id: int):
+    async def get_users(self, id: int) -> dict:
         return await self.request("GET", f"users/{id}")
 
-    async def get_is_voted_bot(self, bot_id: int, user_id: int):
+    async def get_is_voted_bot(self, bot_id: int, user_id: int) -> dict:
         return await self.request(
             "GET", f"bots/{bot_id}/vote", params={"userid": user_id}
         )
 
-    async def post_bot_guild_count(self, id: int, count: int):
+    async def post_bot_guild_count(self, id: int, count: int) -> dict:
         return await self.request("POST", f"bots/{id}/stat", data={"servers": count})
