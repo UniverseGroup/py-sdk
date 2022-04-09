@@ -13,7 +13,7 @@ Status = {
 }
 
 class Router:
-    def __init__(self, token: str, session: ClientSession) -> None:
+    def __init__(self, token: Optional[str] = None, session: Optional[ClientSession] = None) -> None:
         self.BASE = "https://universelist.kr/api/"
         
         self.token = token
@@ -24,7 +24,7 @@ class Router:
         self, 
         method: Literal["GET", "POST"],
         endpoint: str, 
-        authorize: bool = False, 
+        authorize: Optional[bool] = False, 
         **kwargs: Any
     ) -> dict:
         headers = {
