@@ -44,5 +44,6 @@ class NotFound(HTTPException):
 class Forbidden(HTTPException):
     pass
 
+
 class ServerException(HTTPException):
     pass
