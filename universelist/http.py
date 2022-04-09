@@ -69,9 +69,7 @@ class Router:
 
         raise errors.HTTPException(res, data)
 
-    async def close(
-        self,
-    ) -> None:
+    async def close(self) -> None:
         if self._session:
             await self.session.close()
 
@@ -83,8 +81,10 @@ class Router:
 
     async def get_is_voted_bot(self, bot_id: int, user_id: int) -> dict:
         return await self.request(
-            "GET", f"bots/{bot_id}/vote", params={"userid": user_id}
+            "GET", f"bots/{bot_id}/vote", params={"userid": user_id}, authorize=True
         )
 
     async def post_bot_stat(self, id: int, count: int) -> dict:
-        return await self.request("POST", f"bots/{id}/stat", data={"servers": count})
+        return await self.request(
+            "POST", f"bots/{id}/stat", data={"servers": count}, authorize=True
+        )
