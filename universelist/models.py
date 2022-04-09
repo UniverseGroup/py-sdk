@@ -25,6 +25,7 @@ class Bot:
     state: str
     badges: List[Badge]
     locked: bool
+    status: int = 200
 
 
 @dataclass(frozen=True)
@@ -35,8 +36,10 @@ class User:
     avatar: str
     bots: List["Bot"]
     badges: List[Badge]
+    status: int = 200
 
 
 @dataclass(frozen=True)
 class Vote:
     voted: bool
+    status: int = 200
