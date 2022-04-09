@@ -1,8 +1,9 @@
+from multiprocessing.connection import Client
 from aiohttp import ClientSession
-from typing import Optional, Union, Any
+from typing import Literal, Optional, Union, Any, ClassVar
 from datetime import datetime
-from . import *
-import json, asyncio
+from . import errors
+import asyncio
 
 Status = {
     400: errors.HTTPException,
@@ -12,8 +13,8 @@ Status = {
 }
 
 class Router:
-    def __init__(self, token: str) -> None:
-        self.BASE: ClassVar[str] = "https://universelist.kr/api/"
+    def __init__(self, token: str, session: ClientSession) -> None:
+        self.BASE = "https://universelist.kr/api/"
         
         self.token = token
         self.session: Optional[ClientSession] = None
@@ -21,7 +22,7 @@ class Router:
 
     async def request(
         self, 
-        method: Union["GET", "POST"], 
+        method: Literal["GET", "POST"],
         endpoint: str, 
         authorize: bool = False, 
         **kwargs: Any
@@ -37,7 +38,7 @@ class Router:
         kwargs["headers"] = headers
         
         for _ in range(3):
-            async with self.session.request(method, BASE + endpoint, **kwargs) as res:
+            async with self.session.request(method, self.BASE + endpoint, **kwargs) as res:
                 data = res.json()
                 
                 if 200 <= res.status < 300:
