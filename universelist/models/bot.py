@@ -47,5 +47,5 @@ class Bot:
             banner=data.get("banner", ""),
             state=data.get("state", ""),
             badges=data.get("badges", []),
-            locked=data.get("locked" , False),
+            locked=data.get("locked", False),
         )
