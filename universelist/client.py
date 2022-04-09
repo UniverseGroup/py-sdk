@@ -6,7 +6,7 @@ from .http import Router
 from .models import Bot, User, Vote
 
 
-class UniverxeListClient(Router):
+class UniverseListClient(Router):
     def __init__(
         self, token: Optional[str] = None, session: Optional[ClientSession] = None
     ):
