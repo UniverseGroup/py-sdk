@@ -26,3 +26,26 @@ class Bot:
     state: str
     badges: List[Badge]
     locked: bool
+
+    def __init__(self, data: dict) -> None:
+        super().__init__(
+            id=data.get("id"),
+            name=data.get("name"),
+            slug=data.get("slug"),
+            descroption=data.get("descroption"),
+            avatar=data.get("avatar"),
+            library=data.get("library"),
+            prefix=data.get("prefix"),
+            owner=data.get("owner"),
+            status=data.get("status"),
+            hearts=data.get("hearts"),
+            guilds=data.get("guilds"),
+            category=data.get("category"),
+            website=data.get("website"),
+            support=data.get("support"),
+            github=data.get("github"),
+            banner=data.get("banner"),
+            state=data.get("state"),
+            badges=data.get("badges"),
+            locked=data.get("locked"),
+        )
